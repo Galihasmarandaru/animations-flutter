@@ -1,3 +1,14 @@
+import 'package:animations_demo/features/code_based_animation.dart';
+import 'package:animations_demo/features/code_based_animation/explicit_animation/built_in_explicit_animation.dart';
+import 'package:animations_demo/features/code_based_animation/explicit_animation/custom_explicit_animation.dart';
+import 'package:animations_demo/features/code_based_animation/explicit_animation/explicit_animation.dart';
+import 'package:animations_demo/features/code_based_animation/implicit_animation/built_in_implicit_animation.dart';
+import 'package:animations_demo/features/code_based_animation/implicit_animation/implicit_animation.dart';
+import 'package:animations_demo/features/code_based_animation/implicit_animation/tween_animation_builder_example.dart';
+import 'package:animations_demo/features/color_transition_animation.dart';
+import 'package:animations_demo/features/drawing_based_animation.dart';
+import 'package:animations_demo/features/tween_animation.dart';
+import 'package:animations_demo/features/wave_animation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,65 +22,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Flutter Animation Demo',
-      home: AnimationDemo(),
-    );
-  }
-}
 
-class AnimationDemo extends StatefulWidget {
-  const AnimationDemo({super.key});
+      // --- General Animation ---
+      // home: TweenAnimation(),
+      // home: DrawingBasedAnimation(),
+      // home: CodeBasedAnimation(),
+      // home: WaveAnimation(),
+      // home: ColorTransitionAnimation(),
 
-  @override
-  State<StatefulWidget> createState() => _AnimationDemoState();
-}
+      // --- Implicit Animation ---
+      // home: BuiltInImplicitAnimation(),
+      // home: ImplicitAnimation(),
+      // home: TweenAnimationBuilderExample(),
 
-class _AnimationDemoState extends State<AnimationDemo>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _sizeAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-
-    // 1. Initialize the controller
-    _controller = AnimationController(
-      vsync: this, // This is required for the ticker (syncing animation frames)
-      duration: const Duration(seconds: 2), // Duration of the animation
-    );
-
-    // 2. Define the animation using Tween
-    _sizeAnimation = Tween<double>(begin: 50.0, end: 200.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
-
-    // 3. Start the animation
-    _controller.repeat(reverse: true);
-  }
-
-  @override
-  void dispose() {
-    // Always dispose the controller when done to prevent memory leaks
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Flutter Animation Demo')),
-      body: Center(
-        child: AnimatedBuilder(
-          animation: _sizeAnimation,
-          builder: (context, child) {
-            return Container(
-              width: _sizeAnimation.value, // Animated size
-              height: _sizeAnimation.value,
-              color: Colors.blue,
-            );
-          },
-        ),
-      ),
+      // --- Explicit Animation ---
+      // home: BuiltInExplicitAnimation(),
+      // home: ExplicitAnimation(),
+      // home: CustomExplicitAnimation(),
     );
   }
 }
