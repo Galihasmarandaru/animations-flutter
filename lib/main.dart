@@ -1,5 +1,6 @@
 import 'package:animations_demo/features/code_based_animation/code_based_animation.dart';
 import 'package:animations_demo/features/code_based_animation/explicit_animation/built_in_explicit_animation.dart';
+import 'package:animations_demo/features/code_based_animation/explicit_animation/curved_animation_example.dart';
 import 'package:animations_demo/features/code_based_animation/explicit_animation/custom_animation/custom_explicit_animation.dart';
 import 'package:animations_demo/features/code_based_animation/explicit_animation/custom_animation/explicit_animation_builder.dart';
 import 'package:animations_demo/features/code_based_animation/explicit_animation/custom_animation/explicit_animation_widget.dart';
@@ -42,7 +43,8 @@ class MyApp extends StatelessWidget {
       // home: ExplicitAnimation(),
       // home: CustomExplicitAnimation(),
       // home: ExplicitAnimationWidget(),
-      home: ExplicitAnimationBuilder(),
+      // home: ExplicitAnimationBuilder(),
+      home: CurvedAnimationExample(),
     );
   }
 }
